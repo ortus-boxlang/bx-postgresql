@@ -29,6 +29,8 @@ dependencies {
 	// Look for it in the local build directory
 	// You must run `./gradle build -x test` in the BoxLang project
     compileOnly files( 'src/test/resources/libs/boxlang-1.0.0-all.jar' )
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+	implementation 'org.postgresql:postgresql:42.7.3'
 
     // Testing Dependencies
 	testImplementation files( 'src/test/resources/libs/boxlang-1.0.0-all.jar' )
@@ -80,11 +82,12 @@ javadoc.finalizedBy( zipJavadocs )
  * This generates the META-INF/services files for the ServiceLoader as part of the `build` task
  */
 serviceLoader {
-    serviceInterface 'ortus.boxlang.runtime.bifs.BIF'
-    serviceInterface 'ortus.boxlang.runtime.components.Component'
-    serviceInterface 'ortus.boxlang.runtime.async.tasks.IScheduler'
-    serviceInterface 'ortus.boxlang.runtime.cache.providers.ICacheProvider'
-	serviceInterface 'ortus.boxlang.runtime.events.IInterceptor'
+	// ENABLE THE ONES YOU USE
+    // serviceInterface 'ortus.boxlang.runtime.bifs.BIF'
+    // serviceInterface 'ortus.boxlang.runtime.components.Component'
+    // serviceInterface 'ortus.boxlang.runtime.async.tasks.IScheduler'
+    // serviceInterface 'ortus.boxlang.runtime.cache.providers.ICacheProvider'
+	// serviceInterface 'ortus.boxlang.runtime.events.IInterceptor'
 }
 
 jar {
