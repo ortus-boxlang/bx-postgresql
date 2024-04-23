@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ortus.boxlang.modules.bxpostgresql;
+package ortus.boxlang.modules.postgresql;
 
 import ortus.boxlang.runtime.config.segments.DatasourceConfig;
 import ortus.boxlang.runtime.dynamic.casters.StringCaster;
