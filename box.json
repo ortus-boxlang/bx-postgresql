@@ -1,46 +1,48 @@
 {
-    "name":"BoxLang PostgreSQL",
-    "version":"@build.version@+@build.number@",
-    "location"  : "https://downloads.ortussolutions.com/ortussolutions/boxlang-modules/bx-postgresql/@build.version@/bx-postgresql-@build.version@.zip",
-    "author":"Ortus Solutions",
-    "homepage":"https://github.com/boxlang-modules/bx-postgresql",
-    "documentation":"https://github.com/boxlang-modules/bx-postgresql",
-    "repository":{
-        "type":"git",
-        "URL":"https://github.com/boxlang-modules/bx-postgresql"
-    },
-    "bugs":"https://github.com/boxlang-modules/bx-postgresql/issues",
-    "slug":"bx-postgresql",
-    "shortDescription":"Module template for BoxLang modules",
-    "type":"boxlang-modules",
-    "keywords":[
-        "boxlang"
-    ],
-    "private":false,
-    "license":[
-        {
-            "type":"Apache-2.0",
-            "URL":"https://www.apache.org/licenses/LICENSE-2.0"
-        }
-    ],
-	"devDependencies" 	:{
-		"commandbox-cfformat":"*",
-        "commandbox-docbox":"*",
-		"commandbox-dotenv":"*",
-        "commandbox-cfconfig":"*",
+	"name": "BoxLang PostgreSQL",
+	"version": "@build.version@+@build.number@",
+	"location": "https://downloads.ortussolutions.com/ortussolutions/boxlang-modules/bx-postgresql/@build.version@/bx-postgresql-@build.version@.zip",
+	"author": "Ortus Solutions",
+	"homepage": "https://github.com/boxlang-modules/bx-postgresql",
+	"documentation": "https://github.com/boxlang-modules/bx-postgresql",
+	"repository": {
+		"type": "git",
+		"URL": "https://github.com/boxlang-modules/bx-postgresql"
+	},
+	"bugs": "https://github.com/boxlang-modules/bx-postgresql/issues",
+	"slug": "bx-postgresql",
+	"shortDescription": "Module template for BoxLang modules",
+	"type": "boxlang-modules",
+	"keywords": ["boxlang"],
+	"boxlang": {
+		"minimuVersion": "1.0.0",
+		"moduleName": "postgresql"
+	},
+	"private": false,
+	"license": [
+		{
+			"type": "Apache-2.0",
+			"URL": "https://www.apache.org/licenses/LICENSE-2.0"
+		}
+	],
+	"devDependencies": {
+		"commandbox-cfformat": "*",
+		"commandbox-docbox": "*",
+		"commandbox-dotenv": "*",
+		"commandbox-cfconfig": "*",
 		"testbox": "*"
 	},
-    "ignore": [
-        "**/.*",
-        "settings.gradle",
-        "gradlew.bat",
-        "gradlew",
-        "build.gradle",
-        "/src/**",
-        "gradle/**"
-    ],
-	"scripts":{
+	"ignore": [
+		"**/.*",
+		"settings.gradle",
+		"gradlew.bat",
+		"gradlew",
+		"build.gradle",
+		"/src/**",
+		"gradle/**"
+	],
+	"scripts": {
 		"setupTemplate": "task run taskFile=src/build/SetupTemplate.cfc",
-        "onRelease":"publish"
-    }
+		"onRelease": "publish"
+	}
 }
