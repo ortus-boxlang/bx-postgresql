@@ -14,14 +14,13 @@
 	"slug": "bx-postgresql",
 	"shortDescription": "PostgreSQL JDBC Support for BoxLang",
 	"type": "boxlang-modules",
-	"keywords": [
-		"boxlang"
-	],
+	"keywords": ["boxlang"],
 	"boxlang": {
 		"minimuVersion": "1.0.0",
 		"moduleName": "postgresql"
 	},
 	"private": false,
+	"listed": false,
 	"license": [
 		{
 			"type": "Apache-2.0",
