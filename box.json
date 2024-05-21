@@ -20,7 +20,6 @@
 		"moduleName": "postgresql"
 	},
 	"private": false,
-	"listed": false,
 	"license": [
 		{
 			"type": "Apache-2.0",
