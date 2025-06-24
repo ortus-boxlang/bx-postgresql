@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2025-06-24
+
 ### Updated
 
 - Bumps org.postgresql:postgresql from 42.7.3 to 42.7.7.
@@ -17,6 +19,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First iteration of this module
 
-[Unreleased]: https://github.com/ortus-boxlang/bx-postgresql/compare/v1.0.0...HEAD
-
+[unreleased]: https://github.com/ortus-boxlang/bx-postgresql/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/ortus-boxlang/bx-postgresql/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/ortus-boxlang/bx-postgresql/compare/03e1e2f61b5cf74eabab228802d8f214835b5ca1...v1.0.0
