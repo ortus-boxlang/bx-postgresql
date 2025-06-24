@@ -2,13 +2,13 @@
 plugins {
     id 'java'
     // For source code formatting
-    id "com.diffplug.spotless" version "6.25.0"
+    id "com.diffplug.spotless" version "7.0.4"
 	// https://github.com/harbby/gradle-serviceloader
-    id "com.github.harbby.gradle.serviceloader" version "1.1.8"
+    id "com.github.harbby.gradle.serviceloader" version "1.1.9"
 	// For building shadow jars with jdk 17 ONLY
     //id 'com.github.johnrengelman.shadow' version '8.1.1'
     // For building shadow jars using JDK 21 +, they had to fork
-    id "io.github.goooler.shadow" version "8.1.7"
+    id "io.github.goooler.shadow" version "8.1.8"
     // Download task
     id "de.undercouch.download" version "5.6.0"
 }
@@ -23,6 +23,13 @@ ext {
 	branch = System.getenv( 'BRANCH' ) ?: 'development'
 }
 
+if ( branch == 'development' ) {
+    // If the branch is 'development', ensure the version ends with '-snapshot'
+    // This replaces any existing prerelease identifier with '-snapshot'
+    version = version.contains('-') ? version.replaceAll(/-.*/, '-snapshot') : "${version}-snapshot"
+	boxlangVersion = boxlangVersion.contains('-') ? boxlangVersion.replaceAll(/-.*/, '-snapshot') : "${boxlangVersion}-snapshot"
+}
+
 repositories {
     mavenLocal()
     mavenCentral()
@@ -32,12 +39,14 @@ dependencies {
 	// Until BoxLang is published to Maven Central
 	// Look for it in the local build directory
 	// You must run `./gradle build -x test` in the BoxLang project
-    compileOnly files( 'src/test/resources/libs/boxlang-1.0.0-all.jar' )
+	compileOnly files( '../../boxlang/build/libs/boxlang-' + boxlangVersion + '.jar' )
+    compileOnly files( 'src/test/resources/libs/boxlang-' + boxlangVersion + '.jar' )
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
-	implementation 'org.postgresql:postgresql:42.7.3'
+	implementation 'org.postgresql:postgresql:42.7.7'
 
     // Testing Dependencies
-	testImplementation files( 'src/test/resources/libs/boxlang-1.0.0-all.jar' )
+	testImplementation files( '../../boxlang/build/libs/boxlang-' + boxlangVersion + '.jar'  )
+	testImplementation files( 'src/test/resources/libs/boxlang-' + boxlangVersion + '.jar' )
     testImplementation "org.junit.jupiter:junit-jupiter:5.+"
 	testImplementation "org.mockito:mockito-core:5.+"
 	testImplementation "com.google.truth:truth:1.+"
@@ -134,7 +143,7 @@ task createModuleStructure(type: Copy) {
 		// Token Replacements Go Here
 		filter{ line -> line.replaceAll( '@build.version@', project.version ) }
 		if( project.branch == "development" ){
-			filter{ line -> line.replaceAll( '\\+@build.number@', '-SNAPSHOT' ) }
+			filter{ line -> line.replaceAll( '\\+@build.number@', '' ) }
 		} else {
 			filter{ line -> line.replaceAll( '@build.number@', project.buildID ) }
 		}
@@ -146,7 +155,7 @@ task createModuleStructure(type: Copy) {
 		// Token Replacements Go Here
 		filter{ line -> line.replaceAll( '@build.version@', project.version ) }
 		if( project.branch == "development" ){
-			filter{ line -> line.replaceAll( '\\+@build.number@', '-SNAPSHOT' ) }
+			filter{ line -> line.replaceAll( '\\+@build.number@', '' ) }
 		} else {
 			filter{ line -> line.replaceAll( '@build.number@', project.buildID ) }
 		}
@@ -176,7 +185,7 @@ test {
 
 /**
  * TEMPORARY until we publish to maven
- * Task to download the latest jar from https://ortus-temp.s3.amazonaws.com/jericho/libs/boxlang-1.0.0-all.jar
+ * Task to download the latest jar from https://ortus-temp.s3.amazonaws.com/jericho/libs/boxlang-1.0.0.jar
  */
 task downloadBoxLang( type: Download ) {
 	// Create the destination directory
@@ -184,9 +193,9 @@ task downloadBoxLang( type: Download ) {
 		file( "src/test/resources/libs" ).mkdirs()
 	}
     // Configure the URL of the file to download
-    src "https://downloads.ortussolutions.com/ortussolutions/boxlang/${boxlangVersion}/boxlang-${boxlangVersion}-all.jar"
+    src "https://downloads.ortussolutions.com/ortussolutions/boxlang/${boxlangVersion}/boxlang-${boxlangVersion}.jar"
     // Specify the destination directory for the downloaded file
-    dest "src/test/resources/libs/boxlang-${boxlangVersion}-all.jar"
+    dest "src/test/resources/libs/boxlang-${boxlangVersion}.jar"
     overwrite true
     onlyIfModified false
 }

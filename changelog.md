@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Updated
+
+- Bumps org.postgresql:postgresql from 42.7.3 to 42.7.7.
+
 ## [1.0.0] - 2024-06-13
 
 - First iteration of this module

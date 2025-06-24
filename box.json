@@ -3,13 +3,13 @@
 	"version": "@build.version@+@build.number@",
 	"location": "https://downloads.ortussolutions.com/ortussolutions/boxlang-modules/bx-postgresql/@build.version@/bx-postgresql-@build.version@.zip",
 	"author": "Ortus Solutions",
-	"homepage": "https://github.com/boxlang-modules/bx-postgresql",
-	"documentation": "https://github.com/boxlang-modules/bx-postgresql",
+	"homepage": "https://github.com/ortus-boxlang/bx-postgresql",
+	"documentation": "https://github.com/ortus-boxlang/bx-postgresql",
 	"repository": {
 		"type": "git",
-		"URL": "https://github.com/boxlang-modules/bx-postgresql"
+		"URL": "https://github.com/ortus-boxlang/bx-postgresql"
 	},
-	"bugs": "https://github.com/boxlang-modules/bx-postgresql/issues",
+	"bugs": "https://github.com/ortus-boxlang/bx-postgresql/issues",
 	"slug": "bx-postgresql",
 	"shortDescription": "PostgreSQL JDBC Support for BoxLang",
 	"type": "boxlang-modules",
