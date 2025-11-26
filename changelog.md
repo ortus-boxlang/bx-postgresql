@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-11-26
+
 ### Added
 
 - Updated all GitHub workflows to use latest actions and setup versions.
@@ -25,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First iteration of this module
 
-[unreleased]: https://github.com/ortus-boxlang/bx-postgresql/compare/v1.1.0...HEAD
+[unreleased]: https://github.com/ortus-boxlang/bx-postgresql/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/ortus-boxlang/bx-postgresql/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/ortus-boxlang/bx-postgresql/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/ortus-boxlang/bx-postgresql/compare/03e1e2f61b5cf74eabab228802d8f214835b5ca1...v1.0.0
