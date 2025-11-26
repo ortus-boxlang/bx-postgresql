@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Updated all GitHub workflows to use latest actions and setup versions.
+- Bump org.postgresql:postgresql from 42.7.7 to 42.7.8
+- Updated docs
+
 ## [1.1.0] - 2025-06-24
 
 ### Updated

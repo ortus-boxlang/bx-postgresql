@@ -1,4 +1,4 @@
-name: BoxLang PostgreSQL Snapshots
+name: Snapshots
 
 on:
   push:
@@ -9,6 +9,10 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
+
+env:
+  MODULE_ID: ${{ github.event.repository.name }}
+  JDK_VERSION: 21
 
 jobs:
   #############################################
@@ -33,24 +37,20 @@ jobs:
       contents: write
       checks: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Setup Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: "temurin"
-          java-version: 21
+          java-version: ${{ env.JDK_VERSION }}
 
       - name: Format Java Source
-        run: ./gradlew spotlessApply --stacktrace
-
-      # - name: Format BoxLang Source
-      #   uses: Ortus-Solutions/commandbox-action@v1.0.2
-      #   with:
-      #     cmd: run-script format
+        run: |
+          ./gradlew spotlessApply --stacktrace
 
       - name: Commit Format Changes
-        uses: stefanzweifel/git-auto-commit-action@v6
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Apply cfformat changes
 
