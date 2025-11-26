@@ -69,14 +69,14 @@ Use `./gradlew downloadBoxLang` to fetch the required BoxLang version specified 
    ```java
    public class PostgreSQLDriver extends GenericJDBCDriver {
        protected static final String DEFAULT_PORT = "5430";
-       
+
        public PostgreSQLDriver() {
            super();
            this.name = new Key("PostgreSQL");
            this.type = DatabaseDriverType.POSTGRESSQL;
            this.driverClassName = "org.postgresql.Driver";
        }
-       
+
        @Override
        public String buildConnectionURL(DatasourceConfig config) {
            // Validate required properties
@@ -97,7 +97,7 @@ Use `./gradlew downloadBoxLang` to fetch the required BoxLang version specified 
 
 1. **Token Replacement**: Module files use `@build.version@` and `@build.number@` tokens replaced during build
 2. **Module Mapping**: Each module has a BoxLang mapping prefix `bxModules.{mapping}` (e.g., `bxModules.bxpostgresql`)
-3. **Version Format**: 
+3. **Version Format**:
    - Development branch: `1.2.0-snapshot` (build.gradle auto-appends)
    - Release branches: `1.2.0+123` (BUILD_ID injected)
 
