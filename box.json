@@ -13,7 +13,9 @@
 	"slug": "bx-postgresql",
 	"shortDescription": "PostgreSQL JDBC Support for BoxLang",
 	"type": "boxlang-modules",
-	"keywords": ["boxlang"],
+	"keywords": [
+		"boxlang"
+	],
 	"boxlang": {
 		"minimuVersion": "1.0.0",
 		"moduleName": "postgresql"
@@ -26,10 +28,9 @@
 		}
 	],
 	"devDependencies": {
+		"commandbox-boxlang": "*",
 		"commandbox-cfformat": "*",
 		"commandbox-docbox": "*",
-		"commandbox-dotenv": "*",
-		"commandbox-cfconfig": "*",
 		"testbox": "*"
 	},
 	"ignore": [
@@ -41,8 +42,5 @@
 		"/src/**",
 		"gradle/**"
 	],
-	"scripts": {
-		"setupTemplate": "task run taskFile=src/build/SetupTemplate.cfc",
-		"onRelease": "publish"
-	}
+	"scripts": {}
 }
