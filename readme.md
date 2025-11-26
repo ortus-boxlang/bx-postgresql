@@ -183,7 +183,7 @@ try {
                     ["User 1", "user1@test.com"], {"datasource": "mainDB"});
         queryExecute("INSERT INTO users (name, email) VALUES (?, ?)",
                     ["User 2", "user2@test.com"], {"datasource": "mainDB"});
-        
+
         // Commit transaction
         transaction action="commit";
     }
