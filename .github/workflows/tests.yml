@@ -9,6 +9,7 @@ on:
 
 env:
   MODULE_ID: ${{ github.event.repository.name }}
+  GRADLE_VERSION: 8.7
 
 jobs:
   tests:
@@ -21,10 +22,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["ubuntu-latest"]
-        jdkVersion: ["21"]
+        os: [ "ubuntu-latest" ]
+        jdkVersion: [ "21" ]
+        boxlangVersion: [ "1.12.0" ]
         experimental: [false]
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -35,11 +36,16 @@ jobs:
           distribution: "temurin"
           java-version: ${{ matrix.jdkVersion }}
 
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: ${{ env.GRADLE_VERSION }}
+
       - name: Test Module
         run: |
-          ./gradlew downloadBoxLang
+          ./gradlew downloadBoxLang -PboxlangVersion="${{ matrix.boxlangVersion }}"
           # this is done in order to build the module structure before testing
-          ./gradlew shadowJar test --stacktrace --console=plain
+          ./gradlew shadowJar test --stacktrace --console=plain -PboxlangVersion="${{ matrix.boxlangVersion }}"
 
       - name: Upload Test Results
         if: always()
