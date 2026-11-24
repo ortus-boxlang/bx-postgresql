@@ -17,6 +17,9 @@
  */
 package ortus.boxlang.modules.postgresql;
 
+import org.postgresql.util.PGobject;
+
+import ortus.boxlang.runtime.jdbc.BoxStatement;
 import ortus.boxlang.runtime.config.segments.DatasourceConfig;
 import ortus.boxlang.runtime.dynamic.casters.StringCaster;
 import ortus.boxlang.runtime.jdbc.drivers.DatabaseDriverType;
@@ -79,6 +82,28 @@ public class PostgreSQLDriver extends GenericJDBCDriver {
 		    database,
 		    customParamsToQueryString( config )
 		);
+	}
+
+	/**
+	 * Transform a value according to the driver's specific needs. This allows
+	 * drivers to map custom Java classes to native BL types.
+	 * The default implementation will return the value as-is.
+	 *
+	 * @param sqlType   The SQL type of the value, from java.sql.Types
+	 * @param value     The value to transform
+	 * @param statement The BoxStatement instance
+	 *
+	 * @return The transformed value
+	 */
+	// @Override
+	public Object transformValue( int sqlType, Object value, BoxStatement statement ) {
+		if ( value == null ) {
+			return null;
+		}
+		if ( value instanceof PGobject object ) {
+			return object.toString();
+		}
+		return super.transformValue( sqlType, value, statement );
 	}
 
 }
